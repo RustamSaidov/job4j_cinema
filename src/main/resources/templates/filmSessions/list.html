@@ -53,28 +53,18 @@
                 <tr>
 <!--                    <th><i class="bi bi-square"></i></th>-->
                     <th scope="col">#</th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Описание</th>
-                    <th scope="col">Дата выхода</th>
                     <th scope="col">Жанр</th>
-                    <th scope="col">Возрастное ограничение</th>
-                    <th scope="col">Продолжительность, мин</th>
-                    <th scope="col">Постер</th>
+                    <th scope="col">Номер зала</th>
+                    <th scope="col">Начало сеанса</th>
+                    <th scope="col">Конец сеанса</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="film: ${films}">
-                    <td th:text="${film.id}"/>
-<!--                    <td><a th:text="${film.name}"-->
-<!--                           th:href="@{/films/{filmId}(filmId=${film.id})}"></a>-->
-<!--                    </td>-->
-                    <td th:text="${film.name}"/>
-                    <td th:text="${film.description}"/>
-                    <td th:text="${film.year}"/>
-                    <td th:text="${film.year}"/>
-                    <td th:text="${film.year}"/>
-                    <td th:text="${film.year}"/>
-                    <td th:text="${film.year}"/>
+                <tr th:each="filmSession: ${filmSessions}">
+                    <td th:text="${filmSession.year}"/>
+                    <td th:text="${filmSession.year}"/>
+                    <td th:text="${filmSession.startTime}"/>
+                    <td th:text="${filmSession.endTime}"/>
                 </tr>
                 </tbody>
             </table>

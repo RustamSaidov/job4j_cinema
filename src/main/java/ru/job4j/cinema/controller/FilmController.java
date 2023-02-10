@@ -21,12 +21,25 @@ public class FilmController {
         this.genreService = genreService;
     }
 
+//    /*Оттестено*/
+//    @GetMapping
+//    public String getAll(Model model) {
+//        model.addAttribute("films", filmService.findAll());
+//        return "films/list";
+//    }
+
     /*Оттестено*/
     @GetMapping
     public String getAll(Model model) {
-        model.addAttribute("films", filmService.findAll());
+        model.addAttribute("DTOfilms", filmService.findAll());
         return "films/list";
     }
+
+
+
+
+
+
 
 //    /*Оттестено*/
 //    @GetMapping("/create")

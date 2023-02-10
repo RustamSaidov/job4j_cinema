@@ -11,11 +11,9 @@ public interface FilmService {
 
     Film save(Film film, FileDto image);
 
-    boolean deleteById(int id);
 
-    boolean update(Film film, FileDto image);
 
-    Optional<FilmDTO> findById(int id);
+//    Optional<FilmDTO> findById(int id);
 
     Collection<FilmDTO> findAll();
 

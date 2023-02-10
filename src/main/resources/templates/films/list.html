@@ -63,18 +63,19 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="film: ${films}">
-                    <td th:text="${film.id}"/>
+                <tr th:each="DTOfilm: ${DTOfilms}">
+                    <td th:text="${DTOfilm.id}"/>
                     <!--                    <td><a th:text="${film.name}"-->
                     <!--                           th:href="@{/films/{filmId}(filmId=${film.id})}"></a>-->
                     <!--                    </td>-->
-                    <td th:text="${film.name}"/>
-                    <td th:text="${film.description}"/>
-                    <td th:text="${film.year}"/>
-                    <td th:text="${film.genreId}"/>
-                    <td th:text="${film.minimalAge}"/>
-                    <td th:text="${film.durationInMinutes}"/>
-                    <td th:text="${film.fileId}"/>
+                    <td th:text="${DTOfilm.name}"/>
+                    <td th:text="${DTOfilm.description}"/>
+                    <td th:text="${DTOfilm.year}"/>
+                    <td th:text="${DTOfilm.genre}"/>
+                    <td th:text="${DTOfilm.minimalAge}"/>
+                    <td th:text="${DTOfilm.durationInMinutes}"/>
+<!--                    <td th:text="${DTOfilm.content}"/>-->
+                    <td img th:src="${DTOfilm.content}" class="w-100" alt="No image"/>
 
 
 <!--                            <form class="mt-3" th:action="@{/candidates/update}" method="post" th:object="${candidate}"-->

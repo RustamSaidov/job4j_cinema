@@ -7,7 +7,9 @@ import ru.job4j.cinema.dto.FilmDTO;
 import ru.job4j.cinema.model.Film;
 import ru.job4j.cinema.repository.FilmRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @ThreadSafe
@@ -38,55 +40,13 @@ public class SimpleFilmService implements FilmService {
         film.setFileId(file.getId());
     }
 
-    @Override
-    public boolean deleteById(int id) {
-        var fileOptional = findById(id);
-        if (fileOptional.isEmpty()) {
-            return false;
-        }
-        var isDeleted = filmRepository.deleteById(id);
-        fileService.deleteById(fileOptional.get().getFileId());
-        return isDeleted;
-    }
-
-    @Override
-    public boolean update(Film film, FileDto image) {
-        var isNewFileEmpty = image.getContent().length == 0;
-        if (isNewFileEmpty) {
-            return filmRepository.update(film);
-        }
-        /* если передан новый не пустой файл, то старый удаляем, а новый сохраняем */
-        var oldFileId = film.getFileId();
-        saveNewFile(film, image);
-        var isUpdated = filmRepository.update(film);
-        fileService.deleteById(oldFileId);
-        return isUpdated;
-    }
-
 //    @Override
-//    public Optional<Film> findById(int id) {
-//        return filmRepository.findById(id);
+//    public Optional<FilmDTO> findById(int id) {
+//        Film film = filmRepository.findById(id).get();
+//        return Optional.of(new FilmDTO(film.getId(), film.getName(), film.getDescription(), film.getYear(),
+//                getGenreNameById(film.getGenreId()), film.getMinimalAge(), film.getDurationInMinutes(),
+//                fileService.getFileById(film.getFileId()).get().getContent()));
 //    }
-//
-//    @Override
-//    public Collection<Film> findAll() {
-//        return filmRepository.findAll();
-//    }
-
-    @Override
-    public Optional<FilmDTO> findById(int id) {
-        Film film = filmRepository.findById(id);
-        return new FilmDTO(film.getId(), film.getName(),film.getDescription(),film.getYear(),
-                getGenreNameById(film.getGenreId()), film.getMinimalAge(), film.getDurationInMinutes(),
-                );
-        private String name;
-        private String description;
-        private int year;
-        private String genre;
-        private int minimalAge;
-        private int durationInMinutes;
-        private byte[] content;)
-    }
 
     private String getGenreNameById(int id){
         return genreService.findById(id).get().getName();
@@ -94,7 +54,14 @@ public class SimpleFilmService implements FilmService {
 
     @Override
     public Collection<FilmDTO> findAll() {
-        return filmRepository.findAll();
+        List<Film> list = (List<Film>) filmRepository.findAll();
+        List<FilmDTO> listOfFilmDTO = new ArrayList<>();
+        for(int i =0; i<list.size(); i++){
+            listOfFilmDTO.add(new FilmDTO(list.get(i).getId(), list.get(i).getName(), list.get(i).getDescription(), list.get(i).getYear(),
+                    getGenreNameById(list.get(i).getGenreId()), list.get(i).getMinimalAge(), list.get(i).getDurationInMinutes(),
+                    fileService.getFileById(list.get(i).getFileId()).get().getContent()));
+        }
+        return listOfFilmDTO;
     }
 
 }

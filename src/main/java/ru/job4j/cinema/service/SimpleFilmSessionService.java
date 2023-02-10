@@ -3,6 +3,8 @@ package ru.job4j.cinema.service;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Service;
 import ru.job4j.cinema.model.FilmSession;
+import ru.job4j.cinema.repository.FilmRepository;
+import ru.job4j.cinema.repository.FilmSessionRepository;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -10,6 +12,13 @@ import java.util.Optional;
 @ThreadSafe
 @Service
 public class SimpleFilmSessionService implements FilmSessionService {
+
+    private final FilmSessionRepository filmSessionRepository;
+
+    public SimpleFilmSessionService(FilmSessionRepository sql2oFilmSessionRepository) {
+        this.filmSessionRepository = sql2oFilmSessionRepository;
+
+    }
     @Override
     public FilmSession save(FilmSession filmSession) {
         return null;
@@ -32,6 +41,6 @@ public class SimpleFilmSessionService implements FilmSessionService {
 
     @Override
     public Collection<FilmSession> findAll() {
-        return null;
+        return filmSessionRepository.findAll();
     }
 }
