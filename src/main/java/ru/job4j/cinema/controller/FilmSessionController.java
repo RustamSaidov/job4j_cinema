@@ -22,7 +22,7 @@ public class FilmSessionController {
 
     @GetMapping
     public String getAll(Model model) {
-        model.addAttribute("filmSessions", filmSessionService.findAll());
+        model.addAttribute("DTOfilmSessions", filmSessionService.findAll());
         return "filmSessions/list";
     }
 }

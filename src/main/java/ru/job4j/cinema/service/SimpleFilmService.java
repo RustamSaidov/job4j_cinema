@@ -26,7 +26,6 @@ public class SimpleFilmService implements FilmService {
         this.filmRepository = sql2oFilmRepository;
         this.fileService = fileService;
         this.genreService = genreService;
-
     }
 
     @Override

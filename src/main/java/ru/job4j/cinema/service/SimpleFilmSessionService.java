@@ -2,11 +2,16 @@ package ru.job4j.cinema.service;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Service;
+import ru.job4j.cinema.dto.FilmDTO;
+import ru.job4j.cinema.dto.FilmSessionDTO;
+import ru.job4j.cinema.model.Film;
 import ru.job4j.cinema.model.FilmSession;
 import ru.job4j.cinema.repository.FilmRepository;
 import ru.job4j.cinema.repository.FilmSessionRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @ThreadSafe
@@ -14,33 +19,45 @@ import java.util.Optional;
 public class SimpleFilmSessionService implements FilmSessionService {
 
     private final FilmSessionRepository filmSessionRepository;
+    private final FilmRepository filmRepository;
 
-    public SimpleFilmSessionService(FilmSessionRepository sql2oFilmSessionRepository) {
+    public SimpleFilmSessionService(FilmSessionRepository sql2oFilmSessionRepository, FilmRepository filmRepository) {
         this.filmSessionRepository = sql2oFilmSessionRepository;
+        this.filmRepository = filmRepository;
 
     }
-    @Override
-    public FilmSession save(FilmSession filmSession) {
-        return null;
-    }
+//    @Override
+//    public FilmSession save(FilmSession filmSession) {
+//        return null;
+//    }
+//
+//    @Override
+//    public boolean deleteById(int id) {
+//        return false;
+//    }
+//
+//    @Override
+//    public boolean update(FilmSession filmSession) {
+//        return false;
+//    }
+//
+//    @Override
+//    public Optional<FilmSession> findById(int id) {
+//        return Optional.empty();
+//    }
 
     @Override
-    public boolean deleteById(int id) {
-        return false;
-    }
-
-    @Override
-    public boolean update(FilmSession filmSession) {
-        return false;
-    }
-
-    @Override
-    public Optional<FilmSession> findById(int id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public Collection<FilmSession> findAll() {
-        return filmSessionRepository.findAll();
+    public Collection<FilmSessionDTO> findAll() {
+        List<FilmSession> list = (List<FilmSession>) filmSessionRepository.findAll();
+        List<FilmSessionDTO> listOfFilmSessionDTO = new ArrayList<>();
+        for(int i =0; i<list.size(); i++){
+            listOfFilmSessionDTO.add(new FilmSessionDTO(list.get(i).getId(),
+                    filmRepository.findById(list.get(i).getFilmId()).get().getName(),
+                    list.get(i).getHallsId(),
+                    list.get(i).getStartTime(),
+                    list.get(i).getEndTime()
+            ));
+        }
+        return listOfFilmSessionDTO;
     }
 }

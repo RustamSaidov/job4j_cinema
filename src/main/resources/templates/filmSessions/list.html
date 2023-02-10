@@ -60,11 +60,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="filmSession: ${filmSessions}">
-                    <td th:text="${filmSession.year}"/>
-                    <td th:text="${filmSession.year}"/>
-                    <td th:text="${filmSession.startTime}"/>
-                    <td th:text="${filmSession.endTime}"/>
+                <tr th:each="DTOfilmSession: ${DTOfilmSessions}">
+                    <td th:text="${DTOfilmSession.filmName}"/>
+                    <td th:text="${DTOfilmSession.hallsId}"/>
+                    <td th:text="${DTOfilmSession.startTime}"/>
+                    <td th:text="${DTOfilmSession.endTime}"/>
                 </tr>
                 </tbody>
             </table>
