@@ -8,6 +8,7 @@ import ru.job4j.cinema.model.Film;
 import ru.job4j.cinema.model.FilmSession;
 import ru.job4j.cinema.repository.FilmRepository;
 import ru.job4j.cinema.repository.FilmSessionRepository;
+import ru.job4j.cinema.repository.HallRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,10 +21,12 @@ public class SimpleFilmSessionService implements FilmSessionService {
 
     private final FilmSessionRepository filmSessionRepository;
     private final FilmRepository filmRepository;
+    private final HallRepository hallRepository;
 
-    public SimpleFilmSessionService(FilmSessionRepository sql2oFilmSessionRepository, FilmRepository filmRepository) {
+    public SimpleFilmSessionService(FilmSessionRepository sql2oFilmSessionRepository, FilmRepository Sql2oFilmRepository, HallRepository Sql2oHallRepository) {
         this.filmSessionRepository = sql2oFilmSessionRepository;
-        this.filmRepository = filmRepository;
+        this.filmRepository = Sql2oFilmRepository;
+        this.hallRepository = Sql2oHallRepository;
 
     }
 //    @Override
@@ -53,7 +56,7 @@ public class SimpleFilmSessionService implements FilmSessionService {
         for(int i =0; i<list.size(); i++){
             listOfFilmSessionDTO.add(new FilmSessionDTO(list.get(i).getId(),
                     filmRepository.findById(list.get(i).getFilmId()).get().getName(),
-                    list.get(i).getHallsId(),
+                    hallRepository.findById(list.get(i).getHallsId()).get().getName(),
                     list.get(i).getStartTime(),
                     list.get(i).getEndTime()
             ));

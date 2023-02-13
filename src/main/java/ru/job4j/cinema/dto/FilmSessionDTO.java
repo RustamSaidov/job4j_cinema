@@ -6,14 +6,14 @@ public class FilmSessionDTO {
 
     private int id;
     private String filmName;
-    private int hallsId;
+    private String hallsName;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-    public FilmSessionDTO(int id, String filmName, int hallsId, LocalDateTime startTime, LocalDateTime endTime) {
+    public FilmSessionDTO(int id, String filmName, String hallsName, LocalDateTime startTime, LocalDateTime endTime) {
         this.id = id;
         this.filmName = filmName;
-        this.hallsId = hallsId;
+        this.hallsName = hallsName;
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -34,12 +34,12 @@ public class FilmSessionDTO {
         this.filmName = filmName;
     }
 
-    public int getHallsId() {
-        return hallsId;
+    public String getHallsName() {
+        return hallsName;
     }
 
-    public void setHallsId(int hallsId) {
-        this.hallsId = hallsId;
+    public void setHallsName(String hallsName) {
+        this.hallsName = hallsName;
     }
 
     public LocalDateTime getStartTime() {

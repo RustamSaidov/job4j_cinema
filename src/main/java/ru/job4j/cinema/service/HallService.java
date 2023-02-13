@@ -7,13 +7,13 @@ import java.util.Optional;
 
 public interface HallService {
 
-    Hall save(Hall hall);
-
-    boolean deleteById(int id);
-
-    boolean update(Hall hall);
+//    Hall save(Hall hall);
+//
+//    boolean deleteById(int id);
+//
+//    boolean update(Hall hall);
 
     Optional<Hall> findById(int id);
 
-    Collection<Hall> findAll();
+//    Collection<Hall> findAll();
 }
