@@ -45,6 +45,7 @@
                 <thead>
                 <tr>
 <!--                    <th><i class="bi bi-square"></i></th>-->
+                    <th scope="col">Номер сеанса</th>
                     <th scope="col">Название фильма</th>
                     <th scope="col">Номер зала</th>
                     <th scope="col">Начало сеанса</th>
@@ -53,6 +54,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="DTOfilmSession: ${DTOfilmSessions}">
+                    <td th:text="${DTOfilmSession.id}"/>
                     <td th:text="${DTOfilmSession.filmName}"/>
                     <td th:text="${DTOfilmSession.hallsName}"/>
                     <td th:text="${DTOfilmSession.startTime}"/>
