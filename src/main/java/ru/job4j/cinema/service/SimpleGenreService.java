@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class SimpleGenreService implements GenreService {
 
-        private final GenreRepository genreRepository;
+    private final GenreRepository genreRepository;
 
 
     public SimpleGenreService(GenreRepository sql2oGenreRepository) {
@@ -24,30 +24,6 @@ public class SimpleGenreService implements GenreService {
         return genreRepository.save(genre);
     }
 
-//    @Override
-//    public boolean deleteById(int id) {
-//        var fileOptional = findById(id);
-//        if (fileOptional.isEmpty()) {
-//            return false;
-//        }
-//        var isDeleted = genreRepository.deleteById(id);
-//        fileService.deleteById(fileOptional.get().getFileId());
-//        return isDeleted;
-//    }
-//
-//    @Override
-//    public boolean update(Genre genre) {
-//        var isNewFileEmpty = image.getContent().length == 0;
-//        if (isNewFileEmpty) {
-//            return vacancyRepository.update(vacancy);
-//        }
-//        /* если передан новый не пустой файл, то старый удаляем, а новый сохраняем */
-//        var oldFileId = vacancy.getFileId();
-//        saveNewFile(vacancy, image);
-//        var isUpdated = vacancyRepository.update(vacancy);
-//        fileService.deleteById(oldFileId);
-//        return isUpdated;
-//    }
 
     @Override
     public Optional<Genre> findById(int id) {

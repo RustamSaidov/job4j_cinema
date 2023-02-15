@@ -2,9 +2,7 @@ package ru.job4j.cinema.service;
 
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Service;
-import ru.job4j.cinema.dto.FilmDTO;
 import ru.job4j.cinema.dto.FilmSessionDTO;
-import ru.job4j.cinema.model.Film;
 import ru.job4j.cinema.model.FilmSession;
 import ru.job4j.cinema.repository.FilmRepository;
 import ru.job4j.cinema.repository.FilmSessionRepository;
@@ -13,7 +11,6 @@ import ru.job4j.cinema.repository.HallRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 
 @ThreadSafe
 @Service
@@ -23,37 +20,19 @@ public class SimpleFilmSessionService implements FilmSessionService {
     private final FilmRepository filmRepository;
     private final HallRepository hallRepository;
 
-    public SimpleFilmSessionService(FilmSessionRepository sql2oFilmSessionRepository, FilmRepository Sql2oFilmRepository, HallRepository Sql2oHallRepository) {
+    public SimpleFilmSessionService(FilmSessionRepository sql2oFilmSessionRepository, FilmRepository sql2oFilmRepository, HallRepository sql2oHallRepository) {
         this.filmSessionRepository = sql2oFilmSessionRepository;
-        this.filmRepository = Sql2oFilmRepository;
-        this.hallRepository = Sql2oHallRepository;
+        this.filmRepository = sql2oFilmRepository;
+        this.hallRepository = sql2oHallRepository;
 
     }
-//    @Override
-//    public FilmSession save(FilmSession filmSession) {
-//        return null;
-//    }
-//
-//    @Override
-//    public boolean deleteById(int id) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean update(FilmSession filmSession) {
-//        return false;
-//    }
-//
-//    @Override
-//    public Optional<FilmSession> findById(int id) {
-//        return Optional.empty();
-//    }
+
 
     @Override
     public Collection<FilmSessionDTO> findAll() {
         List<FilmSession> list = (List<FilmSession>) filmSessionRepository.findAll();
         List<FilmSessionDTO> listOfFilmSessionDTO = new ArrayList<>();
-        for(int i =0; i<list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             listOfFilmSessionDTO.add(new FilmSessionDTO(list.get(i).getId(),
                     filmRepository.findById(list.get(i).getFilmId()).get().getName(),
                     hallRepository.findById(list.get(i).getHallsId()).get().getName(),

@@ -44,7 +44,7 @@
             <table class="table">
                 <thead>
                 <tr>
-<!--                    <th><i class="bi bi-square"></i></th>-->
+                    <!--                    <th><i class="bi bi-square"></i></th>-->
                     <th scope="col">Номер сеанса</th>
                     <th scope="col">Название фильма</th>
                     <th scope="col">Номер зала</th>
@@ -55,6 +55,10 @@
                 <tbody>
                 <tr th:each="DTOfilmSession: ${DTOfilmSessions}">
                     <td th:text="${DTOfilmSession.id}"/>
+                    <!--                    <td><a th:text="${DTOfilmSession.id}" th:href="@{/filmSessions/{DTOfilmSessionId}(DTOfilmSessionId=${DTOfilmSessions.id})}"></a>-->
+                    <!--                    </td>-->
+                    <!--                    <td><a th:text="${vacancy.title}" th:href="@{/vacancies/{vacancyId}(vacancyId=${vacancy.id})}"></a>-->
+                    <!--                    </td>-->
                     <td th:text="${DTOfilmSession.filmName}"/>
                     <td th:text="${DTOfilmSession.hallsName}"/>
                     <td th:text="${DTOfilmSession.startTime}"/>

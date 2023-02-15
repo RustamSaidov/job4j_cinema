@@ -27,14 +27,7 @@
                     <a class="nav-item nav-link" href="/">Главная</a>
                     <a class="nav-item nav-link" th:href="@{/filmSessions}">Расписание</a>
                     <a class="nav-item nav-link active" th:href="@{/films}">Кинотека</a>
-                    <!--                    <a class="nav-item nav-link" th:href="@{/candidates}">Кандидаты</a>-->
-                    <!--                    <a class="nav-item nav-link" th:href="@{/vacancies/create}">Создать вакансию</a>-->
-                    <!--                    <a class="nav-item nav-link" th:href="@{/candidates/create}">Создать кандидата</a>-->
                 </div>
-                <!--                <div class="d-flex">-->
-                <!--                    <a class="nav-link text-secondary me-3" th:href="@{/users/register}">Регистрация</a>-->
-                <!--                    <a class="nav-link text-light" th:href="@{/users/login}">Войти</a>-->
-                <!--                </div>-->
                 <div class="d-flex" th:if="${user.fullName == 'Гость'}">
                     <a class="nav-link text-secondary me-3" th:href="@{/users/register}">Регистрация</a>
                     <a class="nav-link text-secondary me-3" th:href="@{/users/login}">Войти</a>
@@ -47,96 +40,41 @@
         </div>
     </nav>
     <div class="container">
-        <div class="row">
-            <table class="table">
-                <thead>
-                <tr>
-<!--                    <th><i class="bi bi-square"></i></th>-->
-                    <th scope="col">#</th>
-                    <th scope="col">Название</th>
-                    <th scope="col">Описание</th>
-                    <th scope="col">Дата выхода</th>
-                    <th scope="col">Жанр</th>
-                    <th scope="col">Возрастное ограничение</th>
-                    <th scope="col">Продолжительность, мин</th>
-                    <th scope="col">Постер</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="DTOfilm: ${DTOfilms}">
-                    <td th:text="${DTOfilm.id}"/>
-                    <!--                    <td><a th:text="${film.name}"-->
-                    <!--                           th:href="@{/films/{filmId}(filmId=${film.id})}"></a>-->
-                    <!--                    </td>-->
-                    <td th:text="${DTOfilm.name}"/>
-                    <td th:text="${DTOfilm.description}"/>
-                    <td th:text="${DTOfilm.year}"/>
-                    <td th:text="${DTOfilm.genre}"/>
-                    <td th:text="${DTOfilm.minimalAge}"/>
-                    <td th:text="${DTOfilm.durationInMinutes}"/>
-<!--                    <td th:text="${DTOfilm.content}"/>-->
-                    <td img th:src="${DTOfilm.content}" class="w-100" alt="No image"/>
-
-
-<!--                            <form class="mt-3" th:action="@{/candidates/update}" method="post" th:object="${candidate}"-->
-<!--                                  enctype="multipart/form-data">-->
-<!--                                <input type="hidden" name="id" th:field="*{id}">-->
-<!--                                <input type="hidden" name="fileId" th:field="*{fileId}">-->
-<!--                                <div class="row mb-3">-->
-<!--                                    <div class="col-3">-->
-<!--                                        <div class="mb-3">-->
-<!--                                            <img th:src="@{/files/{fileId}(fileId=*{fileId})}" class="w-100" alt="No image">-->
-<!--                                        </div>-->
-<!--                                        <div class="mb-3">-->
-<!--                                            <input class="form-control form-control-sm w-100" type="file" id="formFile" name="file">-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--&lt;!&ndash;                                    <div class="col-9">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <div class="mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <label for="name" class="form-label"><b>Имя кандидата</b></label>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <input type="text" class="form-control" id="name" name="name" th:field="*{name}"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                   placeholder="Введите новое имя кандидата">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <div class="mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <label for="city"><b>Город</b></label>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <select class="form-control" id="city" name="cityId">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <option th:each="city : ${cities}" th:value="${city.id}" th:text="${city.name}"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                        th:field="*{cityId}" th:selected="${city.id==cityId}"></option>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            </select>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <div class="form-check mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <input type="checkbox" name="visible" class="form-check-input" id="visible"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                   th:field="*{visible}">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <label class="form-check-label" for="visible">Опубликовать</label>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                                </div>-->
-<!--&lt;!&ndash;                                <div class="mb-3">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <label for="description" class="form-label"><b>Описание опыта кандидата</b></label>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <textarea class="form-control" id="description" name="description" th:field="*{description}" rows="25"&ndash;&gt;-->
-<!--&lt;!&ndash;                                              placeholder="Опишите опыт кандидата"></textarea>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                <div class="mb-3 row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="col-6"></div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    <div class="col-6">&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <div class="row">&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <div class="col-4"><a class="btn btn-light w-100" th:href="@{/candidates}">Отмена</a></div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <div class="col-4"><a class="btn btn-danger w-100"&ndash;&gt;-->
-<!--&lt;!&ndash;                                                                  th:href="@{/candidates/delete/{id}(id=${candidate.id})}">Удалить</a></div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            <div class="col-4">&ndash;&gt;-->
-<!--&lt;!&ndash;                                                <button class="btn btn-success w-100" type="submit">Обновить</button>&ndash;&gt;-->
-<!--&lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                            </form>-->
-
-
-
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <form class="mt-3" th:object="${DTOfilm}" enctype="multipart/form-data">
+            <input type="hidden" name="id" th:field="*{id}">
+            <input type="hidden" name="fileId" th:field="*{fileId}">
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Описание</th>
+                        <th scope="col">Дата выхода</th>
+                        <th scope="col">Жанр</th>
+                        <th scope="col">Возрастное ограничение</th>
+                        <th scope="col">Продолжительность, мин</th>
+                        <th scope="col">Постер</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="DTOfilm: ${DTOfilms}">
+                        <td th:text="${DTOfilm.id}"/>
+                        <td th:text="${DTOfilm.name}"/>
+                        <td th:text="${DTOfilm.description}"/>
+                        <td th:text="${DTOfilm.year}"/>
+                        <td th:text="${DTOfilm.genre}"/>
+                        <td th:text="${DTOfilm.minimalAge}"/>
+                        <td th:text="${DTOfilm.durationInMinutes}"/>
+                        <td img th:src="@{/files/{fileId}(fileId=*{fileId})}" class="w-100" alt="No image"/>
+                        <!--                    <td img class="img-thumbnail" th:src="@{|/files/${DTOfilm.fileId}|}" width="300"/>-->
+                        <!--                    <td><a class="image"><img alt="IMG 2124 Everest.jpg" src="/pie.jpg" decoding="async" width="60" height="40"  data-file-width="1024" data-file-height="682" /></a>-->
+                        <!--                    </td>-->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
     </div>
 </div>
 </body>

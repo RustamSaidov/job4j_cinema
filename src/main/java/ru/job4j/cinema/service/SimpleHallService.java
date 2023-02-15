@@ -17,28 +17,6 @@ public class SimpleHallService implements HallService {
         this.hallRepository = sql2oHallRepository;
     }
 
-
-//    @Override
-//    public Hall save(Hall hall) {
-//        return null;
-//    }
-//
-//    @Override
-//    public boolean deleteById(int id) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean update(Hall hall) {
-//        return false;
-//    }
-
-//    @Override
-//    public Collection<Hall> findAll() {
-//        return null;
-//    }
-
-
     @Override
     public Optional<Hall> findById(int id) {
         return hallRepository.findById(id);

@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Genre {
 
-        public static final Map<String, String> COLUMN_MAPPING = Map.of(
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
             "id", "id",
             "name", "name"
     );
