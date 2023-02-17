@@ -11,6 +11,7 @@ import ru.job4j.cinema.repository.HallRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @ThreadSafe
 @Service
@@ -25,6 +26,11 @@ public class SimpleFilmSessionService implements FilmSessionService {
         this.filmRepository = sql2oFilmRepository;
         this.hallRepository = sql2oHallRepository;
 
+    }
+
+    @Override
+    public Optional<FilmSession> findById(int id) {
+        return filmSessionRepository.findById(id);
     }
 
 

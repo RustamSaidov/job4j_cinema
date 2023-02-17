@@ -30,15 +30,19 @@ public class TicketController {
     /*Оттестено*/
     @PostMapping("/buy")
     public String buyTicket(Model model, @ModelAttribute Ticket ticket) {
+
+        System.out.println(ticket);
+
         var savedTicket = ticketService.save(ticket);
         if (savedTicket.isEmpty()) {
             model.addAttribute("message", "Данный билет уже был приобретен ранее");
             return "errors/404";
         }
-        model.addAttribute("message", String.format("Ваш сеанс номер: %s, ряд: %s, место: %s",
+        String message = String.format("Ваш сеанс номер: %s, ряд: %s, место: %s",
                 savedTicket.get().getSessionId(),
                 savedTicket.get().getRowNumber(),
-                savedTicket.get().getPlaceNumber()));
-        return "redirect:/tickets/success";
+                savedTicket.get().getPlaceNumber());
+        model.addAttribute("message", message );
+                return "tickets/success";
     }
 }

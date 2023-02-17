@@ -54,11 +54,13 @@
                 </thead>
                 <tbody>
                 <tr th:each="DTOfilmSession: ${DTOfilmSessions}">
-                    <td th:text="${DTOfilmSession.id}"/>
-                    <!--                    <td><a th:text="${DTOfilmSession.id}" th:href="@{/filmSessions/{DTOfilmSessionId}(DTOfilmSessionId=${DTOfilmSessions.id})}"></a>-->
-                    <!--                    </td>-->
-                    <!--                    <td><a th:text="${vacancy.title}" th:href="@{/vacancies/{vacancyId}(vacancyId=${vacancy.id})}"></a>-->
-                    <!--                    </td>-->
+<!--                    <td><a th:text="${DTOfilmSession.id}" th:href="@{/tickets/buy}"></a>-->
+<!--                    </td>-->
+<!--                    <td><a th:text="${vacancy.title}" th:href="@{/vacancies/{vacancyId}(vacancyId=${vacancy.id})}"></a>-->
+<!--                    </td>-->
+                    </td>
+                    <td><a th:text="${DTOfilmSession.id}" th:href="@{/filmSessions/{DTOfilmSessionId}(DTOfilmSessionId=${DTOfilmSession.id})}"></a>
+                    </td>
                     <td th:text="${DTOfilmSession.filmName}"/>
                     <td th:text="${DTOfilmSession.hallsName}"/>
                     <td th:text="${DTOfilmSession.startTime}"/>

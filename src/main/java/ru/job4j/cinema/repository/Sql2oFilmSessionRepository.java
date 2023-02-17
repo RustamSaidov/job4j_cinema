@@ -6,6 +6,7 @@ import org.sql2o.Sql2o;
 import ru.job4j.cinema.model.FilmSession;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @ThreadSafe
 @Repository
@@ -22,6 +23,16 @@ public class Sql2oFilmSessionRepository implements FilmSessionRepository {
         try (var connection = sql2o.open()) {
             var query = connection.createQuery("SELECT * FROM film_sessions");
             return query.setColumnMappings(FilmSession.COLUMN_MAPPING).executeAndFetch(FilmSession.class);
+        }
+    }
+
+    @Override
+    public Optional<FilmSession> findById(int id) {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("SELECT * FROM film_sessions WHERE id = :id");
+            query.addParameter("id", id);
+            var filmSession = query.setColumnMappings(FilmSession.COLUMN_MAPPING).executeAndFetchFirst(FilmSession.class);
+            return Optional.ofNullable(filmSession);
         }
     }
 }

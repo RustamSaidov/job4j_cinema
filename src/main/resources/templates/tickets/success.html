@@ -14,7 +14,7 @@
             integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
             crossorigin="anonymous"></script>
 
-    <title>Ошибка</title>
+    <title>Успешная покупка билета</title>
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -40,8 +40,9 @@
     </nav>
     <div class="container">
         <h3 class="mt-3">Поздравляю! Вы успешно приобрели билет!</h3>
-        <p class="text-danger" th:text="Ряд: "> th:text="${message}"></p>
-        <p class="text-danger" th:text="Место: "> th:text="${message}"></p>
+        <p class="text-danger" th:text="${message}"></p>
+<!--        <p class="text-danger" th:text="Ряд: " th:text="${message}"></p>-->
+<!--        <p class="text-danger" th:text="Место: " th:text="${message}"></p>-->
 
     </div>
 </div>
