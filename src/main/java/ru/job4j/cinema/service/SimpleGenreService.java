@@ -19,10 +19,10 @@ public class SimpleGenreService implements GenreService {
         this.genreRepository = sql2oGenreRepository;
     }
 
-    @Override
-    public Genre save(Genre genre) {
-        return genreRepository.save(genre);
-    }
+//    @Override
+//    public Genre save(Genre genre) {
+//        return genreRepository.save(genre);
+//    }
 
 
     @Override
@@ -30,9 +30,9 @@ public class SimpleGenreService implements GenreService {
         return genreRepository.findById(id);
     }
 
-    @Override
-    public Collection<Genre> findAll() {
-        return genreRepository.findAll();
-    }
+//    @Override
+//    public Collection<Genre> findAll() {
+//        return genreRepository.findAll();
+//    }
 
 }
