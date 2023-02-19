@@ -32,12 +32,13 @@ public class UserController {
     /*Оттестено*/
     @PostMapping("/register")
     public String register(Model model, @ModelAttribute User user) {
+        System.out.println(user);
         var savedUser = userService.save(user);
         if (savedUser.isEmpty()) {
             model.addAttribute("message", "Пользователь с такой почтой уже существует");
             return "errors/404";
         }
-        return "redirect:/vacancies";
+        return "redirect:/index";
     }
 
     /*Оттестено*/
@@ -56,7 +57,7 @@ public class UserController {
         }
         var session = request.getSession();
         session.setAttribute("user", userOptional.get());
-        return "redirect:/vacancies";
+        return "redirect:/index";
     }
 
     /*Оттестено*/

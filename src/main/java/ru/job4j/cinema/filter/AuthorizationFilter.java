@@ -1,4 +1,4 @@
-package ru.job4j.dreamjob.filter;
+package ru.job4j.cinema.filter;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -31,7 +31,11 @@ public class AuthorizationFilter extends HttpFilter {
     }
 
     private boolean isAlwaysPermitted(String uri) {
-        return uri.startsWith("/users/register") || uri.startsWith("/users/login");
+        return uri.startsWith("/users/register")
+                || uri.startsWith("/users/login")
+                || uri.matches("/")
+                || uri.startsWith("/films")
+                || uri.matches("/filmSessions")
+                ;
     }
-
 }

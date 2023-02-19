@@ -20,21 +20,19 @@
 <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="/">Job4jDreamJob</a>
+            <a class="navbar-brand" href="/">Кинотеатр</a>
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav me-auto">
                     <a class="nav-item nav-link" href="/">Главная</a>
-                    <a class="nav-item nav-link" th:href="@{/vacancies}">Вакансии</a>
-                    <a class="nav-item nav-link" th:href="@{/candidates}">Кандидаты</a>
-                    <a class="nav-item nav-link" th:href="@{/vacancies/create}">Создать вакансию</a>
-                    <a class="nav-item nav-link" th:href="@{/candidates/create}">Создать кандидата</a>
+                    <a class="nav-item nav-link" th:href="@{/filmSessions}">Расписание</a>
+                    <a class="nav-item nav-link" th:href="@{/films}">Кинотека</a>
                 </div>
-                <div class="d-flex" th:if="${user.name == 'Гость'}">
+                <div class="d-flex" th:if="${user.fullName == 'Гость'}">
                     <a class="nav-link text-secondary me-3" th:href="@{/users/register}">Регистрация</a>
                     <a class="nav-link text-secondary me-3" th:href="@{/users/login}">Войти</a>
                 </div>
-                <div class="d-flex" th:if="${user.name != 'Гость'}">
-                    <a class="nav-link text-secondary me-3" href="#" th:text="${user.name}"></a>
+                <div class="d-flex" th:if="${user.fullName != 'Гость'}">
+                    <a class="nav-link text-secondary me-3" href="#" th:text="${user.fullName}"></a>
                     <a class="nav-link text-secondary me-3" th:href="@{/users/logout}">Выйти</a>
                 </div>
             </div>
@@ -44,7 +42,7 @@
         <form class="mt-3" th:action="@{/users/register}" method="post" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="name" class="form-label"><b>Имя</b></label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Иван" required>
+                <input type="text" class="form-control" id="name" name="fullName" placeholder="Иван" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label"><b>Почта</b></label>

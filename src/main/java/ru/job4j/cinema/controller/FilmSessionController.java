@@ -36,7 +36,7 @@ public class FilmSessionController {
             return "errors/404";
         }
         var filmSession = filmSessionOptional.get();
-        model.addAttribute("filmSession333", filmSession);
+        model.addAttribute("sessionId", filmSession.getId());
         model.addAttribute("rows", hallService.getRowCountByHallId(filmSession.getHallsId()));
         model.addAttribute("places", hallService.getPlaceCountByHallId(filmSession.getHallsId()));
         return "tickets/buy";
