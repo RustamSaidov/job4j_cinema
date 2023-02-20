@@ -1,11 +1,11 @@
-/*package ru.job4j.dreamjob.controller;
+package ru.job4j.cinema.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.ui.ConcurrentModel;
-import ru.job4j.dreamjob.model.User;
-import ru.job4j.dreamjob.service.UserService;
+import ru.job4j.cinema.model.User;
+import ru.job4j.cinema.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -39,7 +39,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void whenPostUserThenRedirectToVacanciesPage() throws Exception {
+    public void whenPostUserThenRedirectToIndexPage() throws Exception {
         var user = new User(1, "test1@mail.ru", "testName1", "password");
         var userArgumentCaptor = ArgumentCaptor.forClass(User.class);
         when(userService.save(userArgumentCaptor.capture())).thenReturn(Optional.of(user));
@@ -48,7 +48,7 @@ public class UserControllerTest {
         var view = userController.register(model, user);
         var actualUser = userArgumentCaptor.getValue();
 
-        assertThat(view).isEqualTo("redirect:/vacancies");
+        assertThat(view).isEqualTo("redirect:/index");
         assertThat(actualUser).isEqualTo(user);
     }
 
@@ -89,7 +89,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void whenLoginUserThenRegirectVacancies() {
+    public void whenLoginUserThenRegirectIndexPage() {
         var user = new User(1, "test1@mail.ru", "testName1", "password");
         var optUser = Optional.of(user);
         when(userService.findByEmailAndPassword(user.getEmail(), user.getPassword())).thenReturn(optUser);
@@ -100,7 +100,7 @@ public class UserControllerTest {
         var view = userController.loginUser(user, model, httpServletRequest);
 
         Optional<User> actualUser = (Optional<User>) httpServletRequest.getSession().getAttribute("user");
-        assertThat(view).isEqualTo("redirect:/vacancies");
+        assertThat(view).isEqualTo("redirect:/index");
         assertThat(actualUser.get()).isEqualTo(user);
 
     }
@@ -112,4 +112,4 @@ public class UserControllerTest {
     }
 }
 
- */
+

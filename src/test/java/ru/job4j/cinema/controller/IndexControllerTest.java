@@ -1,5 +1,5 @@
-/*
-package ru.job4j.dreamjob.controller;
+
+package ru.job4j.cinema.controller;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,4 +21,4 @@ public class IndexControllerTest {
     }
 }
 
- */
+

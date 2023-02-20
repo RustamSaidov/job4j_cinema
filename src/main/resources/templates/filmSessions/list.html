@@ -24,7 +24,6 @@
             <a class="navbar-brand" href="/">Кинотеатр</a>
             <div class="collapse navbar-collapse">
                 <div class="navbar-nav me-auto">
-                    <a class="nav-item nav-link" href="/">Главная</a>
                     <a class="nav-item nav-link active" th:href="@{/filmSessions}">Расписание</a>
                     <a class="nav-item nav-link" th:href="@{/films}">Кинотека</a>
                 </div>
@@ -44,7 +43,6 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <!--                    <th><i class="bi bi-square"></i></th>-->
                     <th scope="col">Номер сеанса</th>
                     <th scope="col">Название фильма</th>
                     <th scope="col">Номер зала</th>
@@ -54,10 +52,6 @@
                 </thead>
                 <tbody>
                 <tr th:each="DTOfilmSession: ${DTOfilmSessions}">
-<!--                    <td><a th:text="${DTOfilmSession.id}" th:href="@{/tickets/buy}"></a>-->
-<!--                    </td>-->
-<!--                    <td><a th:text="${vacancy.title}" th:href="@{/vacancies/{vacancyId}(vacancyId=${vacancy.id})}"></a>-->
-<!--                    </td>-->
                     </td>
                     <td><a th:text="${DTOfilmSession.id}" th:href="@{/filmSessions/{DTOfilmSessionId}(DTOfilmSessionId=${DTOfilmSession.id})}"></a>
                     </td>

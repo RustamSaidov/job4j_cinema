@@ -10,6 +10,7 @@ import ru.job4j.cinema.repository.FilmRepository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @ThreadSafe
 @Service
@@ -37,16 +38,11 @@ public class SimpleFilmService implements FilmService {
         var file = fileService.save(image);
         film.setFileId(file.getId());
     }
-/*
-    @Override
-    public Optional<FilmDTO> findById(int id) {
-        Film film = filmRepository.findById(id).get();
-        return Optional.of(new FilmDTO(film.getId(), film.getName(), film.getDescription(), film.getYear(),
-                getGenreNameById(film.getGenreId()), film.getMinimalAge(), film.getDurationInMinutes(),
-                list.get(i).getFileId()));
-    }
 
- */
+    @Override
+    public Optional<Film> findById(int id) {
+        return filmRepository.findById(id);
+    }
 
     private String getGenreNameById(int id) {
         return genreService.findById(id).get().getName();
