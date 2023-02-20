@@ -43,6 +43,4 @@ public class FilmControllerTest {
         assertThat(view).isEqualTo("films/list");
         assertThat(actualFilmsDTO).isEqualTo(expectedFilmsDTO);
     }
-
-
 }

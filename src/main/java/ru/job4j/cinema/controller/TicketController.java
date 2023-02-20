@@ -22,17 +22,8 @@ public class TicketController {
     }
 
     /*Оттестено*/
-    @GetMapping("/buy")
-    public String getBuyTicketPage() {
-        return "tickets/buy";
-    }
-
-    /*Оттестено*/
     @PostMapping("/buy")
     public String buyTicket(Model model, @ModelAttribute Ticket ticket) {
-
-        System.out.println(ticket);
-
         var savedTicket = ticketService.save(ticket);
         if (savedTicket.isEmpty()) {
             model.addAttribute("message", "Данный билет уже был приобретен ранее");

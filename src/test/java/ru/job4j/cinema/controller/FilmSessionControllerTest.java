@@ -63,7 +63,6 @@ public class FilmSessionControllerTest {
         when(hallService.getPlaceCountByHallId(anyInt())).thenReturn(expectedPlaceList);
         when(filmService.findById(anyInt())).thenReturn(optionalFilm);
 
-
         var model = new ConcurrentModel();
         var view = filmSessionController.getById(model, 1);
         var actualRows = model.getAttribute("rows");
@@ -80,8 +79,6 @@ public class FilmSessionControllerTest {
         var model = new ConcurrentModel();
         var view = filmSessionController.getById(model, 1);
         var actualMessage = model.getAttribute("message");
-
-
         assertThat(view).isEqualTo("errors/404");
         assertThat(actualMessage).isEqualTo("Сеанс с указанным идентификатором не найден");
     }
