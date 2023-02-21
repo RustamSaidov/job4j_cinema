@@ -8,14 +8,14 @@ import java.util.Optional;
 public interface GenreRepository {
 
 
-//    Genre save(Genre genre);
+    Genre save(Genre genre);
 
-//    boolean deleteById(int id);
+    boolean deleteById(int id);
 
 //    boolean update(Genre genre);
 
     Optional<Genre> findById(int id);
 
-//    Collection<Genre> findAll();
+    Collection<Genre> findAll();
 
 }

@@ -19,30 +19,30 @@ public class Sql2oGenreRepository implements GenreRepository {
         this.sql2o = sql2o;
     }
 
-//    @Override
-//    public Genre save(Genre genre) {
-//        try (var connection = sql2o.open()) {
-//            var sql = """
-//                    INSERT INTO genres (name)
-//                    VALUES (:name)
-//                    """;
-//            var query = connection.createQuery(sql, true)
-//                    .addParameter("name", genre.getName());
-//            int generatedId = query.executeUpdate().getKey(Integer.class);
-//            genre.setId(generatedId);
-//            return genre;
-//        }
-//    }
-//
-//    @Override
-//    public boolean deleteById(int id) {
-//        try (var connection = sql2o.open()) {
-//            var query = connection.createQuery("DELETE FROM genres WHERE id = :id");
-//            query.addParameter("id", id);
-//            var affectedRows = query.executeUpdate().getResult();
-//            return affectedRows > 0;
-//        }
-//    }
+    @Override
+    public Genre save(Genre genre) {
+        try (var connection = sql2o.open()) {
+            var sql = """
+                    INSERT INTO genres (name)
+                    VALUES (:name)
+                    """;
+            var query = connection.createQuery(sql, true)
+                    .addParameter("name", genre.getName());
+            int generatedId = query.executeUpdate().getKey(Integer.class);
+            genre.setId(generatedId);
+            return genre;
+        }
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("DELETE FROM genres WHERE id = :id");
+            query.addParameter("id", id);
+            var affectedRows = query.executeUpdate().getResult();
+            return affectedRows > 0;
+        }
+    }
 //
 //    @Override
 //    public boolean update(Genre genre) {
@@ -70,12 +70,11 @@ public class Sql2oGenreRepository implements GenreRepository {
         }
     }
 
-//    @Override
-//    public Collection<Genre> findAll() {
-//        try (var connection = sql2o.open()) {
-//            var query = connection.createQuery("SELECT * FROM genres");
-//            return query.setColumnMappings(Genre.COLUMN_MAPPING).executeAndFetch(Genre.class);
-//        }
-//    }
-
+    @Override
+    public Collection<Genre> findAll() {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("SELECT * FROM genres");
+            return query.setColumnMappings(Genre.COLUMN_MAPPING).executeAndFetch(Genre.class);
+        }
+    }
 }

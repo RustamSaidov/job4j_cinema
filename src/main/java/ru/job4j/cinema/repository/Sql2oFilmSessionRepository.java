@@ -3,6 +3,7 @@ package ru.job4j.cinema.repository;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
+import ru.job4j.cinema.model.Film;
 import ru.job4j.cinema.model.FilmSession;
 
 import java.util.Collection;
@@ -33,6 +34,34 @@ public class Sql2oFilmSessionRepository implements FilmSessionRepository {
             query.addParameter("id", id);
             var filmSession = query.setColumnMappings(FilmSession.COLUMN_MAPPING).executeAndFetchFirst(FilmSession.class);
             return Optional.ofNullable(filmSession);
+        }
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        try (var connection = sql2o.open()) {
+            var query = connection.createQuery("DELETE FROM film_sessions WHERE id = :id");
+            query.addParameter("id", id);
+            var affectedRows = query.executeUpdate().getResult();
+            return affectedRows > 0;
+        }
+    }
+
+    @Override
+    public FilmSession save(FilmSession filmSession) {
+        try (var connection = sql2o.open()) {
+            var sql = """
+                    INSERT INTO filmSessions (film_id, halls_id, start_time, end_time)
+                    VALUES (:filmId, :hallsId, :startTime, :endTime)
+                    """;
+            var query = connection.createQuery(sql, true)
+                    .addParameter("filmId", filmSession.getFilmId())
+                    .addParameter("hallsId", filmSession.getHallsId())
+                    .addParameter("startTime", filmSession.getStartTime())
+                    .addParameter("endTime", filmSession.getEndTime());
+            int generatedId = query.executeUpdate().getKey(Integer.class);
+            filmSession.setId(generatedId);
+            return filmSession;
         }
     }
 }

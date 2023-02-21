@@ -13,4 +13,6 @@ public interface TicketRepository {
     Collection<Ticket> findAll();
 
     boolean deleteById(int id);
+
+    Optional<Ticket> findById(int id);
 }

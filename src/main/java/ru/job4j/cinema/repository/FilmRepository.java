@@ -7,13 +7,11 @@ import java.util.Optional;
 
 public interface FilmRepository {
 
-    Film save(Film film);
-
-    boolean deleteById(int id);
-
+    /*
     boolean update(Film film);
-
+     */
+    Film save(Film film);
+    boolean deleteById(int id);
     Optional<Film> findById(int id);
-
     Collection<Film> findAll();
 }

@@ -1,11 +1,10 @@
-/*
-package ru.job4j.dreamjob.repository;
+package ru.job4j.cinema.repository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.job4j.dreamjob.configuration.DatasourceConfiguration;
-import ru.job4j.dreamjob.model.User;
+import ru.job4j.cinema.configuration.DatasourceConfiguration;
+import ru.job4j.cinema.model.User;
 
 import java.time.temporal.ChronoUnit;
 import java.util.List;
@@ -92,5 +91,3 @@ public class Sql2oUserRepositoryTest {
         assertThat(sql2oUserRepository.deleteById(0)).isFalse();
     }
 }
-
- */
