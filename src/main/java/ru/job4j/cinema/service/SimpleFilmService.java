@@ -50,12 +50,12 @@ public class SimpleFilmService implements FilmService {
 
     @Override
     public Collection<FilmDTO> findAll() {
-        List<Film> list = (List<Film>) filmRepository.findAll();
+        List<Film> films = (List<Film>) filmRepository.findAll();
         List<FilmDTO> listOfFilmDTO = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            listOfFilmDTO.add(new FilmDTO(list.get(i).getId(), list.get(i).getName(), list.get(i).getDescription(), list.get(i).getYear(),
-                    getGenreNameById(list.get(i).getGenreId()), list.get(i).getMinimalAge(), list.get(i).getDurationInMinutes(),
-                    list.get(i).getFileId()));
+        for (int i = 0; i < films.size(); i++) {
+            listOfFilmDTO.add(new FilmDTO(films.get(i).getId(), films.get(i).getName(), films.get(i).getDescription(), films.get(i).getYear(),
+                    getGenreNameById(films.get(i).getGenreId()), films.get(i).getMinimalAge(), films.get(i).getDurationInMinutes(),
+                    films.get(i).getFileId()));
         }
         return listOfFilmDTO;
     }

@@ -3,8 +3,6 @@ package ru.job4j.cinema.repository;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
-import ru.job4j.cinema.model.Film;
-import ru.job4j.cinema.model.Genre;
 import ru.job4j.cinema.model.Hall;
 
 import java.util.ArrayList;
@@ -50,9 +48,9 @@ public class Sql2oHallRepository implements HallRepository {
 
     @Override
     public Collection<Integer> getRowCountByHallId(int hallId) {
-        Collection <Integer> listOfRows = new ArrayList<>();
+        Collection<Integer> listOfRows = new ArrayList<>();
         int rowCount = findById(hallId).get().getRowCount();
-        for(int i=1; i<rowCount+1; i++){
+        for (int i = 1; i < rowCount + 1; i++) {
             listOfRows.add(i);
         }
         return listOfRows;
@@ -60,9 +58,9 @@ public class Sql2oHallRepository implements HallRepository {
 
     @Override
     public Collection<Integer> getPlaceCountByHallId(int hallId) {
-        Collection <Integer> listOfPlaces = new ArrayList<>();
+        Collection<Integer> listOfPlaces = new ArrayList<>();
         int placeCount = findById(hallId).get().getPlaceCount();
-        for(int i=1; i<placeCount+1; i++){
+        for (int i = 1; i < placeCount + 1; i++) {
             listOfPlaces.add(i);
         }
         return listOfPlaces;

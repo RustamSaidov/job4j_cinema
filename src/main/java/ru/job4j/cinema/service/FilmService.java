@@ -3,7 +3,6 @@ package ru.job4j.cinema.service;
 import ru.job4j.cinema.dto.FileDto;
 import ru.job4j.cinema.dto.FilmDTO;
 import ru.job4j.cinema.model.Film;
-import ru.job4j.cinema.model.Ticket;
 
 import java.util.Collection;
 import java.util.Optional;

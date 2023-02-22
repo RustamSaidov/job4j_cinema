@@ -1,21 +1,17 @@
 package ru.job4j.cinema.repository;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
 import ru.job4j.cinema.model.Genre;
 
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Properties;
 
-import static java.time.LocalDateTime.now;
 import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class Sql2oGenreRepositoryTest {
 
@@ -61,16 +57,16 @@ class Sql2oGenreRepositoryTest {
 
     @Test
     public void whenSaveThenGetSame() {
-        var genre = sql2oGenreRepository.save(new Genre(1,"test1"));
+        var genre = sql2oGenreRepository.save(new Genre(1, "test1"));
         var savedGenre = sql2oGenreRepository.findById(genre.getId()).get();
         assertThat(savedGenre).usingRecursiveComparison().isEqualTo(genre);
     }
 
     @Test
     public void whenSaveSeveralThenGetAll() {
-        var genre1 = sql2oGenreRepository.save(new Genre(1,"test1"));
-        var genre2 = sql2oGenreRepository.save(new Genre(2,"test2"));
-        var genre3 = sql2oGenreRepository.save(new Genre(3,"test3"));
+        var genre1 = sql2oGenreRepository.save(new Genre(1, "test1"));
+        var genre2 = sql2oGenreRepository.save(new Genre(2, "test2"));
+        var genre3 = sql2oGenreRepository.save(new Genre(3, "test3"));
         var result = sql2oGenreRepository.findAll();
         assertThat(result).isEqualTo(List.of(genre1, genre2, genre3));
     }
@@ -83,7 +79,7 @@ class Sql2oGenreRepositoryTest {
 
     @Test
     public void whenDeleteThenGetEmptyOptional() {
-        var genre = sql2oGenreRepository.save(new Genre(1,"test1"));
+        var genre = sql2oGenreRepository.save(new Genre(1, "test1"));
         var isDeleted = sql2oGenreRepository.deleteById(genre.getId());
         var savedGenre = sql2oGenreRepository.findById(genre.getId());
         assertThat(isDeleted).isTrue();

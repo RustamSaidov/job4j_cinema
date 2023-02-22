@@ -1,6 +1,6 @@
 INSERT INTO genres(name)
-VALUES ('Триллер');
+VALUES ('РўСЂРёР»Р»РµСЂ');
 INSERT INTO genres(name)
-VALUES ('Боевик');
+VALUES ('Р‘РѕРµРІРёРє');
 INSERT INTO genres(name)
-VALUES ('Комедия');
+VALUES ('РљРѕРјРµРґРёСЏ');

@@ -81,11 +81,25 @@ public class FilmDTO {
         this.durationInMinutes = durationInMinutes;
     }
 
-    public int getFileID() {
+    public int getFileId() {
         return fileId;
     }
 
-    public void setContent(int fileId) {
+    public void setFileId(int fileId) {
         this.fileId = fileId;
+    }
+
+    @Override
+    public String toString() {
+        return "FilmDTO{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", description='" + description + '\''
+                + ", year=" + year
+                + ", genre='" + genre + '\''
+                + ", minimalAge=" + minimalAge
+                + ", durationInMinutes=" + durationInMinutes
+                + ", fileId=" + fileId
+                + '}';
     }
 }

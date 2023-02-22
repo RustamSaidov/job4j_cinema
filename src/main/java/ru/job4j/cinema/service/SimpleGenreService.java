@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.job4j.cinema.model.Genre;
 import ru.job4j.cinema.repository.GenreRepository;
 
-import java.util.Collection;
 import java.util.Optional;
 
 @ThreadSafe

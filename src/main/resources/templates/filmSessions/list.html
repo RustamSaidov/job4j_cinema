@@ -53,7 +53,8 @@
                 <tbody>
                 <tr th:each="DTOfilmSession: ${DTOfilmSessions}">
                     </td>
-                    <td><a th:text="${DTOfilmSession.id}" th:href="@{/filmSessions/{DTOfilmSessionId}(DTOfilmSessionId=${DTOfilmSession.id})}"></a>
+                    <td><a th:text="${DTOfilmSession.id}"
+                           th:href="@{/filmSessions/{DTOfilmSessionId}(DTOfilmSessionId=${DTOfilmSession.id})}"></a>
                     </td>
                     <td th:text="${DTOfilmSession.filmName}"/>
                     <td th:text="${DTOfilmSession.hallsName}"/>

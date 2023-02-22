@@ -62,7 +62,7 @@ class Sql2oFilmSessionRepositoryTest {
     public void whenSaveThenGetSame() {
         var startTime = now().truncatedTo(ChronoUnit.MINUTES);
         var endTime = startTime.plusMinutes(90).truncatedTo(ChronoUnit.MINUTES);
-        var filmSession = sql2oFilmSessionRepository.save(new FilmSession(1,1,1,startTime,endTime));
+        var filmSession = sql2oFilmSessionRepository.save(new FilmSession(1, 1, 1, startTime, endTime));
         var savedFilmSession = sql2oFilmSessionRepository.findById(filmSession.getId()).get();
         assertThat(savedFilmSession).usingRecursiveComparison().isEqualTo(filmSession);
     }
@@ -71,9 +71,9 @@ class Sql2oFilmSessionRepositoryTest {
     public void whenSaveSeveralThenGetAll() {
         var startTime = now().truncatedTo(ChronoUnit.MINUTES);
         var endTime = startTime.plusMinutes(90).truncatedTo(ChronoUnit.MINUTES);
-        var filmSession1 = sql2oFilmSessionRepository.save(new FilmSession(1,1,1,startTime,endTime));
-        var filmSession2 = sql2oFilmSessionRepository.save(new FilmSession(2,2,2,startTime,endTime));
-        var filmSession3 = sql2oFilmSessionRepository.save(new FilmSession(3,1,1,startTime,endTime));
+        var filmSession1 = sql2oFilmSessionRepository.save(new FilmSession(1, 1, 1, startTime, endTime));
+        var filmSession2 = sql2oFilmSessionRepository.save(new FilmSession(2, 2, 2, startTime, endTime));
+        var filmSession3 = sql2oFilmSessionRepository.save(new FilmSession(3, 1, 1, startTime, endTime));
         var result = sql2oFilmSessionRepository.findAll();
         assertThat(result).isEqualTo(List.of(filmSession1, filmSession2, filmSession3));
     }
@@ -88,7 +88,7 @@ class Sql2oFilmSessionRepositoryTest {
     public void whenDeleteThenGetEmptyOptional() {
         var startTime = now().truncatedTo(ChronoUnit.MINUTES);
         var endTime = startTime.plusMinutes(90).truncatedTo(ChronoUnit.MINUTES);
-        var filmSession = sql2oFilmSessionRepository.save(new FilmSession(1,1,1,startTime,endTime));
+        var filmSession = sql2oFilmSessionRepository.save(new FilmSession(1, 1, 1, startTime, endTime));
         var isDeleted = sql2oFilmSessionRepository.deleteById(filmSession.getId());
         var savedFilmSession = sql2oFilmSessionRepository.findById(filmSession.getId());
         assertThat(isDeleted).isTrue();

@@ -39,9 +39,7 @@
         </div>
     </nav>
     <div class="container">
-        <form class="mt-3" th:object="${DTOfilm}" enctype="multipart/form-data">
-            <input type="hidden" name="id" th:field="*{id}">
-            <input type="hidden" name="fileId" th:field="*{fileId}">
+        <form class="mt-3" enctype="multipart/form-data">
             <div class="row">
                 <table class="table">
                     <thead>
@@ -65,10 +63,14 @@
                         <td th:text="${DTOfilm.genre}"/>
                         <td th:text="${DTOfilm.minimalAge}"/>
                         <td th:text="${DTOfilm.durationInMinutes}"/>
-                        <td img th:src="@{/files/{fileId}(fileId=*{fileId})}" class="w-100" alt="No image"/>
-                        <!--                    <td img class="img-thumbnail" th:src="@{|/files/${DTOfilm.fileId}|}" width="300"/>-->
-                        <!--                    <td><a class="image"><img alt="IMG 2124 Everest.jpg" src="/pie.jpg" decoding="async" width="60" height="40"  data-file-width="1024" data-file-height="682" /></a>-->
-                        <!--                    </td>-->
+                        <td>
+                            <div class="col-3">
+                                <div class="mb-3">
+                                    <img th:src="@{/files/{fileId}(fileId=${DTOfilm.fileId})}" class="w-100"
+                                         alt="No image">
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

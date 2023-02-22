@@ -11,7 +11,10 @@ public interface FilmRepository {
     boolean update(Film film);
      */
     Film save(Film film);
+
     boolean deleteById(int id);
+
     Optional<Film> findById(int id);
+
     Collection<Film> findAll();
 }

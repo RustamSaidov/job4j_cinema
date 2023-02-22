@@ -1,11 +1,9 @@
 package ru.job4j.cinema.repository;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
-import ru.job4j.cinema.model.File;
 import ru.job4j.cinema.model.Film;
 
 import java.time.temporal.ChronoUnit;

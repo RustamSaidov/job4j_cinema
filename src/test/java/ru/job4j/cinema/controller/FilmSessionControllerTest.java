@@ -39,9 +39,9 @@ public class FilmSessionControllerTest {
 
     @Test
     public void whenRequestFilmSessionListPageThenGetPageWithFilmSessions() {
-        var DTOfilmSession1 = new FilmSessionDTO(1, "Фильм1", "Зал1", LocalDateTime.now(), LocalDateTime.now());
-        var DTOfilmSession2 = new FilmSessionDTO(1, "Фильм2", "Зал2", LocalDateTime.now(), LocalDateTime.now());
-        var expectedFilmSessionsDTO = List.of(DTOfilmSession1, DTOfilmSession2);
+        var filmSession1DTO = new FilmSessionDTO(1, "Фильм1", "Зал1", LocalDateTime.now(), LocalDateTime.now());
+        var filmSession2DTO = new FilmSessionDTO(1, "Фильм2", "Зал2", LocalDateTime.now(), LocalDateTime.now());
+        var expectedFilmSessionsDTO = List.of(filmSession1DTO, filmSession2DTO);
         when(filmSessionService.findAll()).thenReturn(expectedFilmSessionsDTO);
 
         var model = new ConcurrentModel();

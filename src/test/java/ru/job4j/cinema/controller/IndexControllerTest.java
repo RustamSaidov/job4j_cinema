@@ -1,4 +1,3 @@
-
 package ru.job4j.cinema.controller;
 
 import org.junit.jupiter.api.BeforeEach;

@@ -38,7 +38,7 @@
         </div>
     </nav>
     <div class="container">
-        <form class="mt-2" th:action="@{/tickets/buy}" method="post" >
+        <form class="mt-2" th:action="@{/tickets/buy}" method="post">
             <input type="hidden" name="sessionId" th:value="${sessionId}">
             <input type="hidden" name="userId" th:value="${user.id}">
 
@@ -52,7 +52,7 @@
                 <label for="row"><b>Ряд</b></label>
                 <select class="form-control" id="row" name="rowNumber">
                     <option th:each="row : ${rows}" th:value="${row}" th:text="${row}"
-                            ></option>
+                    ></option>
                 </select>
             </div>
             <div class="mb-3">

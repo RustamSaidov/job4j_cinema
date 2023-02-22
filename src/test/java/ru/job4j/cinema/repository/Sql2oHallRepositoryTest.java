@@ -1,22 +1,17 @@
 package ru.job4j.cinema.repository;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ru.job4j.cinema.configuration.DatasourceConfiguration;
-import ru.job4j.cinema.model.File;
 import ru.job4j.cinema.model.Hall;
 
-import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Properties;
 
-import static java.time.LocalDateTime.now;
 import static java.util.Collections.emptyList;
 import static java.util.Optional.empty;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class Sql2oHallRepositoryTest {
 
@@ -62,16 +57,16 @@ class Sql2oHallRepositoryTest {
 
     @Test
     public void whenSaveThenGetSame() {
-        var hall = sql2oHallRepository.save(new Hall(1,"test1", 1, 1, "test1"));
+        var hall = sql2oHallRepository.save(new Hall(1, "test1", 1, 1, "test1"));
         var savedHall = sql2oHallRepository.findById(hall.getId()).get();
         assertThat(savedHall).usingRecursiveComparison().isEqualTo(hall);
     }
 
     @Test
     public void whenSaveSeveralThenGetAll() {
-        var hall1 = sql2oHallRepository.save(new Hall(1,"test1", 1, 1, "test1"));
-        var hall2 = sql2oHallRepository.save(new Hall(2,"test2", 1, 1, "test2"));
-        var hall3 = sql2oHallRepository.save(new Hall(3,"test3", 1, 1, "test3"));
+        var hall1 = sql2oHallRepository.save(new Hall(1, "test1", 1, 1, "test1"));
+        var hall2 = sql2oHallRepository.save(new Hall(2, "test2", 1, 1, "test2"));
+        var hall3 = sql2oHallRepository.save(new Hall(3, "test3", 1, 1, "test3"));
         var result = sql2oHallRepository.findAll();
         assertThat(result).isEqualTo(List.of(hall1, hall2, hall3));
     }
@@ -84,7 +79,7 @@ class Sql2oHallRepositoryTest {
 
     @Test
     public void whenDeleteThenGetEmptyOptional() {
-        var hall = sql2oHallRepository.save(new Hall(1,"test1", 1, 1, "test1"));
+        var hall = sql2oHallRepository.save(new Hall(1, "test1", 1, 1, "test1"));
         var isDeleted = sql2oHallRepository.deleteById(hall.getId());
         var savedHall = sql2oHallRepository.findById(hall.getId());
         assertThat(isDeleted).isTrue();
