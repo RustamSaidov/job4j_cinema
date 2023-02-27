@@ -16,10 +16,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class Sql2oGenreRepositoryTest {
 
     private static Sql2oGenreRepository sql2oGenreRepository;
-//
-//    private static Sql2oFileRepository sql2oFileRepository;
-//
-//    private static File file;
 
     @BeforeAll
     public static void initRepositories() throws Exception {
@@ -36,16 +32,7 @@ class Sql2oGenreRepositoryTest {
         var sql2o = configuration.databaseClient(datasource);
 
         sql2oGenreRepository = new Sql2oGenreRepository(sql2o);
-//        sql2oFileRepository = new Sql2oFileRepository(sql2o);
-//
-//        file = new File("test", "test");
-//        sql2oFileRepository.save(file);
     }
-
-//    @AfterAll
-//    public static void deleteFile() {
-//        sql2oFileRepository.deleteById(file.getId());
-//    }
 
     @AfterEach
     public void clearGenres() {

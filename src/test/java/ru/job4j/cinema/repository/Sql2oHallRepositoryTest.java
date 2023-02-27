@@ -17,10 +17,6 @@ class Sql2oHallRepositoryTest {
 
     private static Sql2oHallRepository sql2oHallRepository;
 
-//    private static Sql2oFileRepository sql2oFileRepository;
-//
-//    private static File file;
-
     @BeforeAll
     public static void initRepositories() throws Exception {
         var properties = new Properties();
@@ -36,16 +32,8 @@ class Sql2oHallRepositoryTest {
         var sql2o = configuration.databaseClient(datasource);
 
         sql2oHallRepository = new Sql2oHallRepository(sql2o);
-//        sql2oFileRepository = new Sql2oFileRepository(sql2o);
-//
-//        file = new File("test", "test");
-//        sql2oFileRepository.save(file);
     }
 
-//    @AfterAll
-//    public static void deleteFile() {
-//        sql2oFileRepository.deleteById(file.getId());
-//    }
 
     @AfterEach
     public void clearHalls() {
@@ -57,16 +45,16 @@ class Sql2oHallRepositoryTest {
 
     @Test
     public void whenSaveThenGetSame() {
-        var hall = sql2oHallRepository.save(new Hall(1, "test1", 1, 1, "test1"));
+        var hall = sql2oHallRepository.save(new Hall(1, "test1", 10, 10, "test1"));
         var savedHall = sql2oHallRepository.findById(hall.getId()).get();
         assertThat(savedHall).usingRecursiveComparison().isEqualTo(hall);
     }
 
     @Test
     public void whenSaveSeveralThenGetAll() {
-        var hall1 = sql2oHallRepository.save(new Hall(1, "test1", 1, 1, "test1"));
-        var hall2 = sql2oHallRepository.save(new Hall(2, "test2", 1, 1, "test2"));
-        var hall3 = sql2oHallRepository.save(new Hall(3, "test3", 1, 1, "test3"));
+        var hall1 = sql2oHallRepository.save(new Hall(1, "test1", 10, 10, "test1"));
+        var hall2 = sql2oHallRepository.save(new Hall(2, "test2", 20, 20, "test2"));
+        var hall3 = sql2oHallRepository.save(new Hall(3, "test3", 30, 30, "test3"));
         var result = sql2oHallRepository.findAll();
         assertThat(result).isEqualTo(List.of(hall1, hall2, hall3));
     }
@@ -79,7 +67,7 @@ class Sql2oHallRepositoryTest {
 
     @Test
     public void whenDeleteThenGetEmptyOptional() {
-        var hall = sql2oHallRepository.save(new Hall(1, "test1", 1, 1, "test1"));
+        var hall = sql2oHallRepository.save(new Hall(1, "test1", 10, 10, "test1"));
         var isDeleted = sql2oHallRepository.deleteById(hall.getId());
         var savedHall = sql2oHallRepository.findById(hall.getId());
         assertThat(isDeleted).isTrue();

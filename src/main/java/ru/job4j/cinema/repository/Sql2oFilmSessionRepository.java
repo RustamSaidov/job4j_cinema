@@ -50,7 +50,7 @@ public class Sql2oFilmSessionRepository implements FilmSessionRepository {
     public FilmSession save(FilmSession filmSession) {
         try (var connection = sql2o.open()) {
             var sql = """
-                    INSERT INTO filmSessions (film_id, halls_id, start_time, end_time)
+                    INSERT INTO film_sessions (film_id, halls_id, start_time, end_time)
                     VALUES (:filmId, :hallsId, :startTime, :endTime)
                     """;
             var query = connection.createQuery(sql, true)

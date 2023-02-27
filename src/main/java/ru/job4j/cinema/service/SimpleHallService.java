@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.job4j.cinema.model.Hall;
 import ru.job4j.cinema.repository.HallRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -25,11 +26,21 @@ public class SimpleHallService implements HallService {
 
     @Override
     public Collection<Integer> getRowCountByHallId(int hallId) {
-        return hallRepository.getRowCountByHallId(hallId);
+        Collection<Integer> listOfRows = new ArrayList<>();
+        int rowCount = findById(hallId).get().getRowCount();
+        for (int i = 1; i < rowCount + 1; i++) {
+            listOfRows.add(i);
+        }
+        return listOfRows;
     }
 
     @Override
     public Collection<Integer> getPlaceCountByHallId(int hallId) {
-        return hallRepository.getPlaceCountByHallId(hallId);
+        Collection<Integer> listOfPlaces = new ArrayList<>();
+        int placeCount = findById(hallId).get().getPlaceCount();
+        for (int i = 1; i < placeCount + 1; i++) {
+            listOfPlaces.add(i);
+        }
+        return listOfPlaces;
     }
 }

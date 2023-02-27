@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.cinema.model.Hall;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -46,25 +45,25 @@ public class Sql2oHallRepository implements HallRepository {
         }
     }
 
-    @Override
-    public Collection<Integer> getRowCountByHallId(int hallId) {
-        Collection<Integer> listOfRows = new ArrayList<>();
-        int rowCount = findById(hallId).get().getRowCount();
-        for (int i = 1; i < rowCount + 1; i++) {
-            listOfRows.add(i);
-        }
-        return listOfRows;
-    }
-
-    @Override
-    public Collection<Integer> getPlaceCountByHallId(int hallId) {
-        Collection<Integer> listOfPlaces = new ArrayList<>();
-        int placeCount = findById(hallId).get().getPlaceCount();
-        for (int i = 1; i < placeCount + 1; i++) {
-            listOfPlaces.add(i);
-        }
-        return listOfPlaces;
-    }
+//    @Override
+//    public Collection<Integer> getRowCountByHallId(int hallId) {
+//        Collection<Integer> listOfRows = new ArrayList<>();
+//        int rowCount = findById(hallId).get().getRowCount();
+//        for (int i = 1; i < rowCount + 1; i++) {
+//            listOfRows.add(i);
+//        }
+//        return listOfRows;
+//    }
+//
+//    @Override
+//    public Collection<Integer> getPlaceCountByHallId(int hallId) {
+//        Collection<Integer> listOfPlaces = new ArrayList<>();
+//        int placeCount = findById(hallId).get().getPlaceCount();
+//        for (int i = 1; i < placeCount + 1; i++) {
+//            listOfPlaces.add(i);
+//        }
+//        return listOfPlaces;
+//    }
 
     @Override
     public Hall save(Hall hall) {
