@@ -11,8 +11,10 @@ public interface GenreRepository {
     Genre save(Genre genre);
 
     boolean deleteById(int id);
+/*
+    boolean update(Genre genre);
 
-//    boolean update(Genre genre);
+ */
 
     Optional<Genre> findById(int id);
 
