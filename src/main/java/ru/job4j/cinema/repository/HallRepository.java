@@ -7,10 +7,6 @@ import java.util.Optional;
 
 public interface HallRepository {
 
-//    Collection<Integer> getRowCountByHallId(int hallId);
-//
-//    Collection<Integer> getPlaceCountByHallId(int hallId);
-
     Optional<Hall> findById(int id);
 
     boolean deleteById(int id);

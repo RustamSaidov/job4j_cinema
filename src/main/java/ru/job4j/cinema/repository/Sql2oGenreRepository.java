@@ -43,22 +43,24 @@ public class Sql2oGenreRepository implements GenreRepository {
             return affectedRows > 0;
         }
     }
-//
-//    @Override
-//    public boolean update(Genre genre) {
-//        try (var connection = sql2o.open()) {
-//            var sql = """
-//                    UPDATE genres
-//                    SET name = :name
-//                    WHERE id = :id
-//                    """;
-//            var query = connection.createQuery(sql)
-//                    .addParameter("name", genre.getName())
-//                    .addParameter("id", genre.getId());
-//            var affectedRows = query.executeUpdate().getResult();
-//            return affectedRows > 0;
-//        }
-//    }
+/*
+    @Override
+    public boolean update(Genre genre) {
+        try (var connection = sql2o.open()) {
+            var sql = """
+                    UPDATE genres
+                    SET name = :name
+                    WHERE id = :id
+                    """;
+            var query = connection.createQuery(sql)
+                    .addParameter("name", genre.getName())
+                    .addParameter("id", genre.getId());
+            var affectedRows = query.executeUpdate().getResult();
+            return affectedRows > 0;
+        }
+    }
+
+ */
 
     @Override
     public Optional<Genre> findById(int id) {
