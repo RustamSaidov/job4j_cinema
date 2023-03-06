@@ -22,7 +22,6 @@ public class FilmController {
         this.genreService = genreService;
     }
 
-    /*Оттестено*/
     @GetMapping
     public String getAll(Model model) {
         model.addAttribute("DTOfilms", filmService.findAll());

@@ -1,6 +1,9 @@
 package ru.job4j.cinema.repository;
 
 import net.jcip.annotations.ThreadSafe;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.cinema.model.Ticket;
@@ -13,6 +16,7 @@ import java.util.Optional;
 public class Sql2oTicketRepository implements TicketRepository {
 
     private final Sql2o sql2o;
+    private static final Logger LOG = LogManager.getLogger(Sql2oTicketRepository.class.getName());
 
     public Sql2oTicketRepository(Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -36,7 +40,7 @@ public class Sql2oTicketRepository implements TicketRepository {
             ticket.setId(generatedId);
             optionalTicket = Optional.of(ticket);
         } catch (Exception e) {
-            System.out.println("Билет на это место на этот киносеанс уже кем-то приобретен");
+            LOG.info("Билет на это место на этот киносеанс уже кем-то приобретен");
         }
         return optionalTicket;
     }

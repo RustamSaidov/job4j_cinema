@@ -23,16 +23,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    /*Оттестено*/
     @GetMapping("/register")
     public String getRegistationPage() {
         return "users/register";
     }
 
-    /*Оттестено*/
     @PostMapping("/register")
     public String register(Model model, @ModelAttribute User user) {
-        System.out.println(user);
         var savedUser = userService.save(user);
         if (savedUser.isEmpty()) {
             model.addAttribute("message", "Пользователь с такой почтой уже существует");
@@ -41,13 +38,11 @@ public class UserController {
         return "redirect:/index";
     }
 
-    /*Оттестено*/
     @GetMapping("/login")
     public String getLoginPage() {
         return "users/login";
     }
 
-    /*Оттестено*/
     @PostMapping("/login")
     public String loginUser(@ModelAttribute User user, Model model, HttpServletRequest request) {
         var userOptional = userService.findByEmailAndPassword(user.getEmail(), user.getPassword());
@@ -60,7 +55,6 @@ public class UserController {
         return "redirect:/index";
     }
 
-    /*Оттестено*/
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();

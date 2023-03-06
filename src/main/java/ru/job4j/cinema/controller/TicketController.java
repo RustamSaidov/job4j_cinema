@@ -20,7 +20,6 @@ public class TicketController {
         this.ticketService = ticketService;
     }
 
-    /*Оттестено*/
     @PostMapping("/buy")
     public String buyTicket(Model model, @ModelAttribute Ticket ticket) {
         var savedTicket = ticketService.save(ticket);

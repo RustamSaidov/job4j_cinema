@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /*@RestController*/
 public class IndexController {
 
-    /*Оттестено*/
     @GetMapping({"/", "/index"})
     public String getIndex() {
         return "/index";

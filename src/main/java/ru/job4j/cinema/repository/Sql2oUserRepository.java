@@ -1,6 +1,8 @@
 package ru.job4j.cinema.repository;
 
 import net.jcip.annotations.ThreadSafe;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.cinema.model.User;
@@ -13,6 +15,7 @@ import java.util.Optional;
 public class Sql2oUserRepository implements UserRepository {
 
     private final Sql2o sql2o;
+    private static final Logger LOG = LogManager.getLogger(Sql2oUserRepository.class.getName());
 
     public Sql2oUserRepository(Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -35,7 +38,7 @@ public class Sql2oUserRepository implements UserRepository {
             user.setId(generatedId);
             optionalUser = Optional.of(user);
         } catch (Exception e) {
-            System.out.println("Пользователь с таким почтовым адресом уже существует");
+            LOG.info("Пользователь с таким почтовым адресом уже существует");
         }
         return optionalUser;
     }
